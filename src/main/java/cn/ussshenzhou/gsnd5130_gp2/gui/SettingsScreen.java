@@ -73,7 +73,7 @@ public class SettingsScreen extends TScreen {
                 entry -> entry.getContent() == ConfigHelper.getConfigRead(MiniMap.class).corner);
     }
 
-    private static void resizeMiniMap() {
+    public static void resizeMiniMap() {
         var window = Minecraft.getInstance().getWindow();
         HudManager.getChildren().stream()
                 .filter(tComponent -> tComponent instanceof MiniMapPanel)
