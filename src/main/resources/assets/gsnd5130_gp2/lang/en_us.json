@@ -1,5 +1,26 @@
 {
   "itemGroup.gsnd5130_gp2": "Example Mod Tab",
   "block.gsnd5130_gp2.example_block": "Example Block",
-  "item.gsnd5130_gp2.example_item": "Example Item"
+  "item.gsnd5130_gp2.example_item": "Example Item",
+
+  "key.category.gsnd5130_gp2.minimap": "GSND5130 Minimap",
+  "key.gsnd5130_gp2.open_settings": "Minimap Settings",
+
+  "gui.gsnd5130_gp2.minimap": "  Minimap",
+  "gui.gsnd5130_gp2.minimap.minimap": "Minimap",
+  "gui.gsnd5130_gp2.minimap.minimap.on": "On",
+  "gui.gsnd5130_gp2.minimap.minimap.off": "Off",
+  "gui.gsnd5130_gp2.minimap.range": "Minimap Range",
+  "gui.gsnd5130_gp2.minimap.rotate": "Follow Player Rotating",
+  "gui.gsnd5130_gp2.minimap.ssaa": "SSAA Ratio",
+  "gui.gsnd5130_gp2.minimap.refresh": "Minimap Refresh Rate",
+  "gui.gsnd5130_gp2.minimap.refresh.every": "Every Frame",
+  "gui.gsnd5130_gp2.minimap.refresh.another": "Every 2 Frames",
+  "gui.gsnd5130_gp2.minimap.refresh.tick": "Every Tick",
+  "gui.gsnd5130_gp2.minimap.refresh.tick20": "Every 20 Ticks",
+  "gui.gsnd5130_gp2.minimap.corner": "Minimap Position",
+  "gui.gsnd5130_gp2.minimap.corner.top_left": "Top Left",
+  "gui.gsnd5130_gp2.minimap.corner.top_right": "Top Right",
+  "gui.gsnd5130_gp2.minimap.corner.bottom_left": "Bottom Left",
+  "gui.gsnd5130_gp2.minimap.corner.bottom_right": "Bottom Right"
 }

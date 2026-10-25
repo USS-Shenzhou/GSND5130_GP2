@@ -1,0 +1,22 @@
+{
+  "key.category.gsnd5130_gp2.minimap": "GSND5130 小地图",
+  "key.gsnd5130_gp2.open_settings": "小地图设置",
+
+  "gui.gsnd5130_gp2.minimap": "  小地图",
+  "gui.gsnd5130_gp2.minimap.minimap": "小地图显示",
+  "gui.gsnd5130_gp2.minimap.minimap.on": "开",
+  "gui.gsnd5130_gp2.minimap.minimap.off": "关",
+  "gui.gsnd5130_gp2.minimap.range": "小地图范围",
+  "gui.gsnd5130_gp2.minimap.rotate": "跟随视角旋转",
+  "gui.gsnd5130_gp2.minimap.ssaa": "SSAA 抗锯齿比例",
+  "gui.gsnd5130_gp2.minimap.refresh": "小地图刷新率",
+  "gui.gsnd5130_gp2.minimap.refresh.every": "每帧",
+  "gui.gsnd5130_gp2.minimap.refresh.another": "每2帧",
+  "gui.gsnd5130_gp2.minimap.refresh.tick": "每刻",
+  "gui.gsnd5130_gp2.minimap.refresh.tick20": "每20刻",
+  "gui.gsnd5130_gp2.minimap.corner": "小地图位置",
+  "gui.gsnd5130_gp2.minimap.corner.top_left": "左上",
+  "gui.gsnd5130_gp2.minimap.corner.top_right": "右上",
+  "gui.gsnd5130_gp2.minimap.corner.bottom_left": "左下",
+  "gui.gsnd5130_gp2.minimap.corner.bottom_right": "右下"
+}
