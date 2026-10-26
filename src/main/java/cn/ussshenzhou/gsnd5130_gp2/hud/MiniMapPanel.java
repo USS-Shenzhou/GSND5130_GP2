@@ -33,6 +33,7 @@ public class MiniMapPanel extends TPanel {
 
     public MiniMapPanel() {
         super();
+        me.setAlpha(0.5f);
         this.add(innerMiniMap);
         this.add(me);
     }

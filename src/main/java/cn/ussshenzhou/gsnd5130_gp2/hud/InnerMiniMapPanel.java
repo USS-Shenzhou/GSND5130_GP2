@@ -17,7 +17,9 @@ import com.mojang.blaze3d.textures.FilterMode;
 import com.mojang.blaze3d.textures.GpuTextureView;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.render.TextureSetup;
 import net.minecraft.client.renderer.DynamicUniforms;
@@ -32,6 +34,8 @@ import net.minecraft.client.renderer.fog.FogRenderer;
 import net.minecraft.client.renderer.state.gui.BlitRenderState;
 import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.util.Mth;
 import net.minecraft.util.Util;
 import net.minecraft.world.phys.Vec3;
 import org.joml.Matrix3x2f;
@@ -63,6 +67,23 @@ public class InnerMiniMapPanel extends TPanel {
     private static final int DISTANCE_TO_CORNER_X = 20;
     private static final int DISTANCE_TO_CORNER_Y = 20;
     private static boolean shouldDraw = true, drawRequested = false;
+    private static final int DIRECTION_LABEL_SIZE = 10;
+    private static final int DIRECTION_LABEL_BACKGROUND_COLOR = 0x80000000;
+    /**
+     * Height of the visible part of a capital letter in the default font, which is shorter than {@link Font#lineHeight}.
+     */
+    private static final int CAPITAL_LETTER_HEIGHT = 7;
+    private static final List<Component> DIRECTION_LABELS = List.of(
+            Component.literal("N").withStyle(ChatFormatting.BOLD),
+            Component.literal("E"),
+            Component.literal("S"),
+            Component.literal("W")
+    );
+    /**
+     * Clockwise angle from screen up to north in the latest requested minimap texture.
+     * The texture is not redrawn every frame, so the labels follow the texture instead of the camera.
+     */
+    private static float textureNorthAngle = 0;
 
     public InnerMiniMapPanel() {
     }
@@ -119,6 +140,7 @@ public class InnerMiniMapPanel extends TPanel {
         }
         if (shouldDraw) {
             drawRequested = true;
+            textureNorthAngle = northAngle();
         }
         if (ConfigHelper.getConfigRead(MiniMap.class).refreshRate == RefreshRate.TICK || ConfigHelper.getConfigRead(MiniMap.class).refreshRate == RefreshRate.TICK_20) {
             shouldDraw = false;
@@ -126,6 +148,51 @@ public class InnerMiniMapPanel extends TPanel {
 
         blit(graphics);
         graphics.outline(x1() - 1, y1() - 1, getMinimapSize() + 2, getMinimapSize() + 2, 0xffffffff);
+        renderDirectionLabels(graphics);
+    }
+
+    /**
+     * The camera is updated before the GUI is extracted, so this matches the rotation that {@link #prepare} uses later in the same frame.
+     */
+    private static float northAngle() {
+        if (!ConfigHelper.getConfigRead(MiniMap.class).followPlayerRotation) {
+            return 0;
+        }
+        return PI - Minecraft.getInstance().gameRenderer.mainCamera().yRot() * PI / 180;
+    }
+
+    /**
+     * Each label is placed where the line from the center toward its direction meets the border,
+     * so it slides along the inside of the border as the map rotates.
+     */
+    private void renderDirectionLabels(GuiGraphicsExtractor graphics) {
+        Font font = Minecraft.getInstance().font;
+        float halfLabelSize = DIRECTION_LABEL_SIZE / 2f;
+        float centerX = (x1() + x2()) / 2f;
+        float centerY = (y1() + y2()) / 2f;
+        float reach = getMinimapSize() / 2f - halfLabelSize;
+        for (int i = 0; i < DIRECTION_LABELS.size(); i++) {
+            float angle = textureNorthAngle + i * PI / 2;
+            float directionX = (float) Math.sin(angle);
+            float directionY = (float) -Math.cos(angle);
+            float distance = reach / Math.max(Math.abs(directionX), Math.abs(directionY));
+            float labelX = Mth.clamp(snapToPixel(centerX + directionX * distance), x1() + halfLabelSize, x2() - halfLabelSize) - halfLabelSize;
+            float labelY = Mth.clamp(snapToPixel(centerY + directionY * distance), y1() + halfLabelSize, y2() - halfLabelSize) - halfLabelSize;
+            Component label = DIRECTION_LABELS.get(i);
+            // The font width includes 1 trailing spacing after the last glyph.
+            float textX = snapToPixel((DIRECTION_LABEL_SIZE - (font.width(label) - 1)) / 2f);
+            float textY = snapToPixel((DIRECTION_LABEL_SIZE - CAPITAL_LETTER_HEIGHT) / 2f);
+            graphics.pose().pushMatrix();
+            graphics.pose().translate(labelX, labelY);
+            graphics.fill(0, 0, DIRECTION_LABEL_SIZE, DIRECTION_LABEL_SIZE, DIRECTION_LABEL_BACKGROUND_COLOR);
+            graphics.pose().translate(textX, textY);
+            graphics.text(font, label, 0, 0, 0xffffffff, false);
+            graphics.pose().popMatrix();
+        }
+    }
+
+    private static float snapToPixel(float guiCoordinate) {
+        return Math.round(guiCoordinate * guiScale()) / guiScale();
     }
 
     /**
