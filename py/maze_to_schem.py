@@ -5,9 +5,8 @@ import zlib
 from pathlib import Path
 
 SCRIPT_DIRECTORY = Path(__file__).resolve().parent
-INPUT_IMAGES = [
-    SCRIPT_DIRECTORY / "output" / "wilson" / "wilson_65px_03.png",
-]
+FILTERED_SEEDS = [33072, 250730, 295284, 371423, 490769, 748228, 838313]
+INPUT_IMAGES = [SCRIPT_DIRECTORY / "output" / "filtered" / f"filtered_65px_seed{seed}.png" for seed in FILTERED_SEEDS]
 OUTPUT_DIRECTORY = SCRIPT_DIRECTORY.parent / "run" / "config" / "worldedit" / "schematics"
 
 WALL_THICKNESS = 1
@@ -201,14 +200,14 @@ def build_schematic(width, length, block_data, paste_origin):
 
 def main():
     OUTPUT_DIRECTORY.mkdir(parents=True, exist_ok=True)
-    for input_image in INPUT_IMAGES:
+    for index, input_image in enumerate(INPUT_IMAGES):
         image_width, image_height, wall_mask = read_wall_mask(input_image)
         width, length, block_data = build_block_data(wall_mask, image_width, image_height, random.Random(WALL_BLOCK_SEED))
         start_x, start_z = start_block_position(image_width, image_height)
 
-        output_path = OUTPUT_DIRECTORY / f"{input_image.stem}_path{PATH_WIDTH}_height{WALL_HEIGHT}.schem"
+        output_path = OUTPUT_DIRECTORY / f"{index:02d}.schem"
         output_path.write_bytes(gzip.compress(build_schematic(width, length, block_data, [start_x, 0, start_z])))
-        print(f"{output_path}  {width} x {WALL_HEIGHT} x {length} (X x Y x Z)  paste origin ({start_x}, 0, {start_z})")
+        print(f"[{index + 1}/{len(INPUT_IMAGES)}] {input_image.name} -> {output_path}  {width} x {WALL_HEIGHT} x {length} (X x Y x Z)  paste origin ({start_x}, 0, {start_z})")
 
 
 if __name__ == "__main__":
