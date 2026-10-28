@@ -1,0 +1,36 @@
+{
+  "stats": {
+    "minecraft:picked_up": {
+      "minecraft:oak_pressure_plate": 1,
+      "minecraft:chorus_fruit": 2
+    },
+    "minecraft:custom": {
+      "minecraft:time_since_rest": 19361,
+      "minecraft:walk_one_cm": 22176,
+      "minecraft:total_world_time": 19528,
+      "minecraft:leave_game": 2,
+      "minecraft:fly_one_cm": 331232,
+      "minecraft:crouch_one_cm": 461,
+      "minecraft:sneak_time": 369,
+      "minecraft:play_time": 19361,
+      "minecraft:jump": 32,
+      "minecraft:time_since_death": 19361
+    },
+    "minecraft:used": {
+      "minecraft:end_stone": 1,
+      "minecraft:chorus_plant": 13,
+      "minecraft:enderman_spawn_egg": 5,
+      "minecraft:beacon": 1,
+      "minecraft:endermite_spawn_egg": 3,
+      "minecraft:chorus_flower": 369,
+      "minecraft:spawner": 6,
+      "minecraft:oak_pressure_plate": 1,
+      "minecraft:light_weighted_pressure_plate": 1,
+      "minecraft:command_block": 2,
+      "minecraft:purpur_block": 1,
+      "minecraft:gold_block": 10,
+      "minecraft:yellow_wool": 9
+    }
+  },
+  "DataVersion": 4903
+}

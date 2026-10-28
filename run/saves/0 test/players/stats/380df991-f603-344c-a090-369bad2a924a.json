@@ -1,0 +1,27 @@
+{
+  "stats": {
+    "minecraft:custom": {
+      "minecraft:sprint_one_cm": 733,
+      "minecraft:time_since_rest": 7316,
+      "minecraft:walk_one_cm": 6469,
+      "minecraft:total_world_time": 8384,
+      "minecraft:leave_game": 3,
+      "minecraft:fly_one_cm": 57597,
+      "minecraft:crouch_one_cm": 144,
+      "minecraft:sneak_time": 212,
+      "minecraft:play_time": 7316,
+      "minecraft:jump": 20,
+      "minecraft:time_since_death": 7316
+    },
+    "minecraft:used": {
+      "minecraft:grass_block": 7,
+      "minecraft:light_weighted_pressure_plate": 2,
+      "minecraft:zombie_spawn_egg": 3,
+      "minecraft:command_block": 2,
+      "minecraft:gold_block": 9,
+      "minecraft:yellow_wool": 11,
+      "minecraft:beacon": 1
+    }
+  },
+  "DataVersion": 4903
+}

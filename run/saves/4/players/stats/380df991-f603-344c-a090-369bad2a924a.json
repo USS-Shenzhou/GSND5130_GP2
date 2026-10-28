@@ -1,0 +1,51 @@
+{
+  "stats": {
+    "minecraft:picked_up": {
+      "minecraft:light_weighted_pressure_plate": 1,
+      "minecraft:wooden_axe": 1,
+      "minecraft:rotten_flesh": 5
+    },
+    "minecraft:killed": {
+      "minecraft:drowned": 6
+    },
+    "minecraft:custom": {
+      "minecraft:time_since_rest": 36158,
+      "minecraft:walk_one_cm": 14696,
+      "minecraft:leave_game": 4,
+      "minecraft:mob_kills": 6,
+      "minecraft:walk_under_water_one_cm": 263816,
+      "minecraft:damage_dealt": 1195,
+      "minecraft:play_time": 36158,
+      "minecraft:jump": 44,
+      "minecraft:time_since_death": 36158,
+      "minecraft:drop": 2,
+      "minecraft:total_world_time": 38193,
+      "minecraft:fly_one_cm": 625559,
+      "minecraft:walk_on_water_one_cm": 57855,
+      "minecraft:crouch_one_cm": 275,
+      "minecraft:sneak_time": 1055
+    },
+    "minecraft:dropped": {
+      "minecraft:light_weighted_pressure_plate": 1,
+      "minecraft:wooden_axe": 1
+    },
+    "minecraft:used": {
+      "minecraft:prismarine": 38,
+      "minecraft:sponge": 12,
+      "minecraft:netherite_sword": 18,
+      "minecraft:kelp": 658,
+      "minecraft:gravel": 33,
+      "minecraft:glow_squid_spawn_egg": 69,
+      "minecraft:beacon": 1,
+      "minecraft:barrier": 29,
+      "minecraft:spawner": 6,
+      "minecraft:drowned_spawn_egg": 6,
+      "minecraft:oak_pressure_plate": 1,
+      "minecraft:light_weighted_pressure_plate": 1,
+      "minecraft:command_block": 2,
+      "minecraft:yellow_wool": 10,
+      "minecraft:gold_block": 11
+    }
+  },
+  "DataVersion": 4903
+}
