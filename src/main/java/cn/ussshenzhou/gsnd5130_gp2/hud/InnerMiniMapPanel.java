@@ -64,8 +64,8 @@ public class InnerMiniMapPanel extends TPanel {
     private static final Quaternionf QUATERNION = new Quaternionf();
     private static final Vector4fc CLEAR_COLOR = new Vector4f(0);
     private static final float PI = (float) Math.PI;
-    private static final int DISTANCE_TO_CORNER_X = 20;
-    private static final int DISTANCE_TO_CORNER_Y = 20;
+    private static final int DISTANCE_TO_CORNER_X = 25;
+    private static final int DISTANCE_TO_CORNER_Y = 25;
     private static boolean shouldDraw = true, drawRequested = false;
     private static final int DIRECTION_LABEL_SIZE = 10;
     private static final int DIRECTION_LABEL_BACKGROUND_COLOR = 0x80000000;
@@ -90,7 +90,7 @@ public class InnerMiniMapPanel extends TPanel {
 
     private static void calculateMinimapSize() {
         var window = Minecraft.getInstance().getWindow();
-        minimapSize = (int) (((int) (window.getHeight() * 0.236 / guiScale())) * guiScale());
+        minimapSize = (int) (((int) (window.getHeight() * 0.3 / guiScale())) * guiScale());
         minimapFrameSize = Math.max(1, (int) (minimapSize * ConfigHelper.getConfigRead(MiniMap.class).ssaaRatio));
     }
 
